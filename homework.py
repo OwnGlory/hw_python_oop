@@ -120,12 +120,11 @@ def read_package(workout_type: str, data: list[int]) -> Training:
         'WLK': SportsWalking
     }
 
-    try:
-        if workout_type in trainig_types:
-            training: Training = trainig_types[workout_type](*data)
-            return training
-    except ValueError:
-        print('A very specific bad thing happened.')
+    if workout_type in trainig_types:
+        training: Training = trainig_types[workout_type](*data)
+        return training
+
+    raise ('A very specific bad thing happened.')
 
 
 def main(training: Training) -> None:
